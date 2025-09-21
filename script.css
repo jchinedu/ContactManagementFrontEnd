@@ -184,3 +184,66 @@ form button:hover {
 #add-button:hover {
   background: #218838;
 }
+#contacts-table {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+}
+#contacts-table th,
+#contacts-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+#contacts-table th {
+  background: #007bff;
+  color: #fff;
+}
+#contacts-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+.action-buttons button {
+  padding: 5px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.action-buttons .edit {
+  background: #ffc107;
+}
+.action-buttons .delete {
+  background: #dc3545;
+  color: #fff;
+}
+.action-buttons .edit:hover {
+  background: #e0a800;
+}
+.action-buttons .delete:hover {
+  background: #c82333;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+  margin-top: 40px;
+  color: #555;
+}
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #search {
+    width: 100%;
+  }
+}
+
