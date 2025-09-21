@@ -301,5 +301,17 @@ function handleSearch() {
   displayContacts(filtered);
 }
 function handleBack() { editingContactId = null; document.getElementById("contact-form").reset(); toggleContactsView(true); }
+document.getElementById("register-form").addEventListener("submit", handleRegister);
+document.getElementById("login-form").addEventListener("submit", handleLogin);
+document.getElementById("contact-form").addEventListener("submit", handleFormSubmit);
+document.getElementById("add-button").addEventListener("click", () => {
+  editingContactId = null;
+  document.getElementById("contact-form").reset();
+  toggleContactsView(false);
+});
+document.getElementById("back-button").addEventListener("click", handleBack);
+document.getElementById("search").addEventListener("input", handleSearch);
+
+showHome()
 
 
