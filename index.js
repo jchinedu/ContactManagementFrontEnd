@@ -176,4 +176,21 @@ async function createContact(contact) {
     console.error("Create contact error:", err);
   }
 }
+async function updateContact(id, contact) {
+  try {
+    const res = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
+      },
+      body: JSON.stringify(contact)
+    });
+    if (!res.ok) {
+      console.error("Update error:", await res.text());
+    }
+  } catch (err) {
+    console.error("Update contact error:", err);
+  }
+}
 
