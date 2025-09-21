@@ -277,4 +277,17 @@ function displayContacts(contactList) {
     })
   );
 }
+function startEditingContact(id) {
+  const contact = contacts.find(c => c.id == id);
+  if (!contact) return;
+
+  editingContactId = id;
+
+  document.getElementById("name").value = contact.name;
+  document.getElementById("phone").value = contact.phone;
+  document.getElementById("address").value = contact.address || "";
+  document.getElementById("email").value = contact.email || "";
+
+  toggleContactsView(false);
+}
 
