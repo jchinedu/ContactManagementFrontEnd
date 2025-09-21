@@ -141,3 +141,22 @@ function logout() {
   showLogin();
 }
 
+async function loadContactsFromBackend() {
+  if (!authToken) return;
+  try {
+    const res = await fetch(API_URL, {
+      headers: { "Authorization": `Bearer ${authToken}` }
+    });
+
+    const text = await res.text();
+    if (res.ok) {
+      contacts = JSON.parse(text);
+      displayContacts(contacts);
+    } else {
+      console.error("Fetch error:", text);
+    }
+  } catch (err) {
+    console.error("Load contacts error:", err);
+  }
+}
+
