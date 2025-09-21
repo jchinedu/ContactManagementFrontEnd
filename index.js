@@ -300,4 +300,6 @@ function handleSearch() {
   );
   displayContacts(filtered);
 }
+function handleBack() { editingContactId = null; document.getElementById("contact-form").reset(); toggleContactsView(true); }
+
 
