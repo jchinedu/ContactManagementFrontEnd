@@ -193,4 +193,20 @@ async function updateContact(id, contact) {
     console.error("Update contact error:", err);
   }
 }
+async function deleteContact(id) {
+  try {
+    const res = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${authToken}`
+      }
+    });
+    if (!res.ok) {
+      console.error("Delete error:", await res.text());
+    }
+    loadContactsFromBackend();
+  } catch (err) {
+    console.error("Delete contact error:", err);
+  }
+}
 
