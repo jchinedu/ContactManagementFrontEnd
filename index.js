@@ -290,4 +290,14 @@ function startEditingContact(id) {
 
   toggleContactsView(false);
 }
+function handleSearch() {
+  const query = document.getElementById("search").value.toLowerCase();
+  const filtered = contacts.filter(c =>
+    c.name.toLowerCase().includes(query) ||
+    (c.phone && c.phone.toLowerCase().includes(query)) ||
+    (c.address && c.address.toLowerCase().includes(query)) ||
+    (c.email && c.email.toLowerCase().includes(query))
+  );
+  displayContacts(filtered);
+}
 
