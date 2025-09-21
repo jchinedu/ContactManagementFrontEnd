@@ -74,3 +74,102 @@ header {
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
+.hero button {
+  background: #007bff;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero button:hover {
+  background: #0056b3;
+}
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.feature-card {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+.feature-card img {
+  max-width: 80px;
+  margin-bottom: 15px;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.about-container img {
+  max-width: 400px;
+  border-radius: 15px;
+}
+.about-text {
+  max-width: 500px;
+}
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #6610f2;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+form input,
+form button {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  background: #0056b3;
+}
+.success {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+#contacts {
+  text-align: center;
+}
+#search {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+
