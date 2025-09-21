@@ -66,3 +66,32 @@ function showBottomAlert(message, type = "success") {
     container.style.opacity = "0";
   }, 3000);
 }
+async function handleRegister(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("register-name").value,
+    username: document.getElementById("register-username").value,
+    password: document.getElementById("register-password").value
+  };
+  try {
+    const res = await fetch(`${AUTH_URL}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const msg = await res.text();
+    document.getElementById("register-feedback").innerHTML =
+      `<div class="${res.ok ? "success" : "error"}">${msg}</div>`;
+
+    if (res.ok) {
+      clearRegisterForm();
+      showBottomAlert("Registration successful!", "success");
+      showLogin(); 
+    } else {
+      showBottomAlert(`Registration failed: ${msg}`, "error");
+    }
+  } catch (err) {
+    console.error("Register error:", err);
+    showBottomAlert("An error occurred during registration.", "error");
+  }
+}
