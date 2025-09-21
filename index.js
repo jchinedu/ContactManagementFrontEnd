@@ -209,4 +209,22 @@ async function deleteContact(id) {
     console.error("Delete contact error:", err);
   }
 }
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const contact = {
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    email: document.getElementById("email").value.trim(),
+  };
+  if (editingContactId) {
+    await updateContact(editingContactId, contact);
+    editingContactId = null;
+  } else {
+    await createContact(contact);
+  }
+  document.getElementById("contact-form").reset();
+  toggleContactsView(true);
+  await loadContactsFromBackend();
+}
 
