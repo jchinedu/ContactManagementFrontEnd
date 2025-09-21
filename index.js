@@ -30,4 +30,39 @@ function showRegister() {
   hideAllSections();
   document.getElementById("register").classList.remove("hidden");
 }
-
+function showContactsPage() {
+  hideAllSections();
+  document.getElementById("contacts").classList.remove("hidden");
+  document.getElementById("logout-link").classList.remove("hidden");
+  document.getElementById("login-nav").classList.add("hidden");
+  document.getElementById("register-nav").classList.add("hidden");
+}
+function showBottomAlert(message, type = "success") {
+  let container = document.getElementById("bottom-alert-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "bottom-alert-container";
+    container.style.position = "fixed";
+    container.style.bottom = "20px";
+    container.style.left = "50%";
+    container.style.transform = "translateX(-50%)";
+    container.style.zIndex = "9999";
+    container.style.minWidth = "250px";
+    container.style.textAlign = "center";
+    container.style.fontWeight = "bold";
+    container.style.padding = "12px 20px";
+    container.style.borderRadius = "5px";
+    container.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+    container.style.color = "#fff";
+    container.style.fontSize = "16px";
+    container.style.opacity = "0";
+    container.style.transition = "opacity 0.3s ease";
+    document.body.appendChild(container);
+  }
+  container.textContent = message;
+  container.style.backgroundColor = type === "success" ? "#4caf50" : "#f44336";
+  container.style.opacity = "1";
+  setTimeout(() => {
+    container.style.opacity = "0";
+  }, 3000);
+}
