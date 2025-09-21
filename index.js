@@ -95,3 +95,49 @@ async function handleRegister(e) {
     showBottomAlert("An error occurred during registration.", "error");
   }
 }
+async function handleLogin(e) {
+  e.preventDefault();
+  const data = {
+    username: document.getElementById("login-username").value,
+    password: document.getElementById("login-password").value
+  };
+  try {
+    const res = await fetch(`${AUTH_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      const result = await res.json();
+      authToken = result.token;
+      document.getElementById("login-feedback").innerHTML = `<div class="success">Login successful!</div>`;
+      clearLoginForm();
+      showContactsPage();
+      showBottomAlert("Login successful!", "success");
+      await loadContactsFromBackend();
+    } else {
+      const msg = await res.text();
+      document.getElementById("login-feedback").innerHTML = `<div class="error">${msg}</div>`;
+      showBottomAlert(`Login failed: ${msg}`, "error");
+    }
+  } catch (err) {
+    console.error("Login error:", err);
+    showBottomAlert("An error occurred during login.", "error");
+  }
+}
+document.getElementById("register-form").addEventListener("submit", handleRegister);
+document.getElementById("login-form").addEventListener("submit", handleLogin);
+
+function logout() {
+  authToken = null;
+  contacts = [];
+  editingContactId = null;
+  clearLoginForm();
+  clearRegisterForm();
+  document.getElementById("contact-form").reset();
+  document.getElementById("logout-link").classList.add("hidden");
+  document.getElementById("login-nav").classList.remove("hidden");
+  document.getElementById("register-nav").classList.remove("hidden");
+  showLogin();
+}
+
