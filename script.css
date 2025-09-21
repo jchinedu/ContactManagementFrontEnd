@@ -172,4 +172,15 @@ form button:hover {
   border: 1px solid #ccc;
   width: 300px;
 }
-
+#add-button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+#add-button:hover {
+  background: #218838;
+}
