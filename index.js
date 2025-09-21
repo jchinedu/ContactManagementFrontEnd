@@ -238,4 +238,43 @@ function toggleContactsView(showList) {
     formView.classList.remove("hidden");
   }
 }
+function displayContacts(contactList) {
+  const tbody = document.querySelector("#contacts-table tbody");
+  tbody.innerHTML = "";
+
+  if (contactList.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No contacts found.</td></tr>`;
+    return;
+  }
+  contactList.forEach(contact => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${contact.name}</td>
+      <td>${contact.phone}</td>
+      <td>${contact.address || ""}</td>
+      <td>${contact.email || ""}</td>
+      <td class="action-buttons">
+        <button class="edit" data-id="${contact.id}">Edit</button>
+        <button class="delete" data-id="${contact.id}">Delete</button>
+      </td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+  document.querySelectorAll(".edit").forEach(btn =>
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      startEditingContact(id);
+    })
+  );
+
+  document.querySelectorAll(".delete").forEach(btn =>
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      if (confirm("Are you sure you want to delete this contact?")) {
+        deleteContact(id);
+      }
+    })
+  );
+}
 
