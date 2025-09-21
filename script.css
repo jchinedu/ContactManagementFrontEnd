@@ -16,3 +16,27 @@ header {
   top: 0;
   z-index: 1000;
 }
+.navbar {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-links li a:hover {
+  color: #ffdf5d;
+}
