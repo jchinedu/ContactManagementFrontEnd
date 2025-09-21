@@ -227,4 +227,15 @@ async function handleFormSubmit(e) {
   toggleContactsView(true);
   await loadContactsFromBackend();
 }
+function toggleContactsView(showList) {
+  const contactsView = document.getElementById("contacts-view");
+  const formView = document.getElementById("form-view");
+  if (showList) {
+    contactsView.classList.remove("hidden");
+    formView.classList.add("hidden");
+  } else {
+    contactsView.classList.add("hidden");
+    formView.classList.remove("hidden");
+  }
+}
 
