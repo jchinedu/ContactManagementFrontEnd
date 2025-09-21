@@ -159,4 +159,21 @@ async function loadContactsFromBackend() {
     console.error("Load contacts error:", err);
   }
 }
+async function createContact(contact) {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
+      },
+      body: JSON.stringify(contact)
+    });
+    if (!res.ok) {
+      console.error("Create error:", await res.text());
+    }
+  } catch (err) {
+    console.error("Create contact error:", err);
+  }
+}
 
